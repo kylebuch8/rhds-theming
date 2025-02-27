@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  color: var(--rh-color-text-primary-on-light, #151515);
+}
+
+rh-surface[role='main'] {
+  padding: 1rem;
+
+  &:not(:defined) {
+    display: block;
+  }
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+}
+
+rh-tile *:is([slot='image'], [slot='headline']) a,
+rh-tile a:is([slot='image'], [slot='headline']) {
+  color: var(--rh-color-interactive-primary-default-on-light, #0066cc) !important;
+}
+
+rh-tile {
+  &:not(:defined) {
+    display: block;
+    position: relative;
+    padding: var(--rh-space-2xl, 32px) var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
+    border-radius: var(--rh-border-radius-default, 3px);
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  }
+}
+
+rh-card {
+  &:not(:defined) {
+    display: block;
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+    padding: var(--rh-space-2xl, 32px)
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: var(--rh-color-surface-darkest, #151515);
+    color: var(--rh-color-text-primary-on-dark, #ffffff);
+  }
+
+  a {
+    color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
+  }
+
+  rh-tile {
+    &:not(:defined) {
+      padding: var(--rh-space-2xl, 32px) var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
+      border-radius: var(--rh-border-radius-default, 3px);
+      border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-dark, #707070);
+    }
+  }
+
+  rh-tile *:is([slot='image'], [slot='headline']) a,
+  rh-tile a:is([slot='image'], [slot='headline']) {
+    color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9) !important;
+  }
+
+  rh-card {
+    &:not(:defined) {
+      border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-dark, #707070);
+    }
+  }
+}
+
+

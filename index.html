@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RHDS Theming</title>
+  <link rel="stylesheet" href="https://ga.jspm.io/npm:@rhds/elements@2.1.1/elements/rh-tile/rh-tile-lightdom.css">
+  <link rel="stylesheet" href="main.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "@rhds/elements/": "https://ga.jspm.io/npm:@rhds/elements@2.1.1/elements/"
+      },
+      "scopes": {
+        "https://ga.jspm.io/": {
+          "@floating-ui/core": "https://ga.jspm.io/npm:@floating-ui/core@1.6.9/dist/floating-ui.core.mjs",
+          "@floating-ui/dom": "https://ga.jspm.io/npm:@floating-ui/dom@1.6.13/dist/floating-ui.dom.mjs",
+          "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.mjs",
+          "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.dom.mjs",
+          "@lit/context": "https://ga.jspm.io/npm:@lit/context@1.1.4/index.js",
+          "@lit/reactive-element": "https://ga.jspm.io/npm:@lit/reactive-element@2.0.4/reactive-element.js",
+          "@lit/reactive-element/decorators/": "https://ga.jspm.io/npm:@lit/reactive-element@2.0.4/decorators/",
+          "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
+          "@patternfly/pfe-core/": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/",
+          "@patternfly/pfe-core/ssr-shims.js": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
+          "@rhds/elements/lib/": "https://ga.jspm.io/npm:@rhds/elements@2.1.1/lib/",
+          "@rhds/elements/": "https://ga.jspm.io/npm:@rhds/elements@2.1.1/elements/",
+          "@rhds/icons": "https://ga.jspm.io/npm:@rhds/icons@1.2.0/icons.js",
+          "@rhds/icons/ui/": "https://ga.jspm.io/npm:@rhds/icons@1.2.0/ui/",
+          "@rhds/tokens/css/": "https://ga.jspm.io/npm:@rhds/tokens@2.2.4/css/",
+          "@rhds/tokens/media.js": "https://ga.jspm.io/npm:@rhds/tokens@2.2.4/js/media.js",
+          "lit": "https://ga.jspm.io/npm:lit@3.2.1/index.js",
+          "lit-element/lit-element.js": "https://ga.jspm.io/npm:lit-element@4.1.1/lit-element.js",
+          "lit-html": "https://ga.jspm.io/npm:lit-html@3.2.1/lit-html.js",
+          "lit-html/": "https://ga.jspm.io/npm:lit-html@3.2.1/",
+          "lit/": "https://ga.jspm.io/npm:lit@3.2.1/",
+          "prism-esm": "https://ga.jspm.io/npm:prism-esm@1.29.0-fix.6/prism.js",
+          "prism-esm/components/": "https://ga.jspm.io/npm:prism-esm@1.29.0-fix.6/components/",
+          "tslib": "https://ga.jspm.io/npm:tslib@2.8.1/tslib.es6.mjs"
+        }
+      }
+    }
+  </script>
+  <script type="module">
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-tile/rh-tile.js';
+    import '@rhds/elements/rh-card/rh-card.js';
+    import '@rhds/elements/rh-cta/rh-cta.js';
+
+    const mainSurface = document.querySelector(`rh-surface[role="main"]`);
+
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      mainSurface.setAttribute("color-palette", "darkest"); 
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      const newColorScheme = event.matches ? "dark" : "light";
+      
+      switch (newColorScheme) {
+        case "dark":
+          mainSurface.setAttribute("color-palette", "darkest");
+          break;
+      
+        default:
+          mainSurface.setAttribute("color-palette", "lightest");
+          break;
+      }
+    });
+  </script>
+</head>
+<body>
+  <rh-surface role="main">
+    <h1>Welcome to Red Hat</h1>
+    <rh-tile>
+      <!-- <img
+        slot="image"
+        src="https://fakeimg.pl/296x50"
+        alt="296 X 50 placeholder image"
+      /> -->
+      <div slot="title">Title</div>
+      <h2 slot="headline"><a href="#top">Link</a></h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <div slot="footer">Suspendisse eu turpis elementum</div>
+    </rh-tile>
+    <rh-card>
+      <h2 slot="header">Card</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+         Nullam eleifend elit sed est egestas, a sollicitudin mauris
+         tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+         felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+      <rh-cta slot="footer" priority="primary">
+        <a href="#">Call to action</a>
+      </rh-cta>
+    </rh-card>
+  </rh-surface>
+</body>
+</html>
